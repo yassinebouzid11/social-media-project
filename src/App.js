@@ -1,9 +1,10 @@
 import './App.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { Main } from './pages/main';
-import { Login } from './pages/login';
+import  {Login } from './pages/login';
 import { NavBar } from './components/navBar';
 import { CreatePost } from "./pages/createPost";
+
 
 function App() {
 

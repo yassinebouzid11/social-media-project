@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+  
+  /* Main content (posts area) */
+  .main-content {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  /* Sidebar */
+  .right-sidebar {
+    
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    height: 100vh;
+    background-color: #eee;
+    /* border-radius: 8px; */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
