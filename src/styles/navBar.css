@@ -1,0 +1,33 @@
+*{
+    box-sizing: 0;
+    margin: 0;
+}
+
+.flex{
+    display: flex;
+}
+.flex-between{
+    justify-content: space-between;
+}
+.flex-evenly{
+    justify-content: space-evenly;
+}
+.flex-column{
+    flex-direction: column;
+}
+.align-center{
+    align-items: center;
+}
+
+.margin-1{
+    margin: 1em;
+}
+
+.nav{
+    background-color: #eee;
+    border-radius: 0 0 1em 1em;
+    height: 3em;
+}
+.img-profile{
+    border-radius: 50%;
+}
