@@ -20,6 +20,10 @@
     padding: 0.75rem;
     border-radius: 8px;
     background: #f9f9f9;
+    align-items: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
   }
   
   .comment-author {
@@ -33,6 +37,8 @@
     font-size: 0.95rem;
     line-height: 1.4;
     margin-bottom: 0.5rem;
+    align-items: flex-start;
+
   }
   
   .comment-time {

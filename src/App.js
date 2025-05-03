@@ -17,7 +17,6 @@ function App() {
           <Route path='/' element={<Main />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/createP' element={<CreatePost />}/>
-          <Route path='/comment/:idPost' element={<CommentList />}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,18 +1,18 @@
 // AddComment.js
 import { useState } from 'react';
-import { db, Timestamp } from '../firebase';
+import { db } from '../config/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
-export default function AddComment({ postId, currentUserId }) {
+export default function AddComment({ idPost, userId }) {
   const [commentText, setCommentText] = useState('');
-
+  console.log("test 4:",idPost)
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addDoc(collection(db, 'comments'), {
-      postId,
+      idPost,
       text: commentText,
-      userId: currentUserId,
-      createdAt: Timestamp.now(),
+      userId: userId,
+      createdAt: new Date().toLocaleDateString()
     });
     setCommentText('');
   };

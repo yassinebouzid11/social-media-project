@@ -39,10 +39,10 @@ export const Main = () => {
     const filteredPosts = postsList.filter((post) =>
         post.title.toLowerCase().includes(searchInput.toLowerCase())
     );
-
+    console.log("test 2 :",commentPostId)
     return (
         <div className="container">
-            {showComments && (
+            {showComments && user && (
                 <div className="comment-layout">
                             <div className="comment-section">
                                 <CommentList idPost={commentPostId} />
@@ -61,9 +61,11 @@ export const Main = () => {
                 <h3>Please login first</h3>
                 )}
             </div>
-            <div className="right-sidebar">
-                <RightSidebar />
-            </div>
+            {user && (
+                <div className="right-sidebar">
+                    <RightSidebar />
+                </div>
+            )}
         </div>
     );
 };
