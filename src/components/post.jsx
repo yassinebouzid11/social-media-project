@@ -1,12 +1,13 @@
 import { collection, addDoc, query, where, getDocs,deleteDoc,doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const Post=(props)=>{
-    const {post,user}=props;    
-
+    const {post,user, handleComment}=props;    
     const[likes, setLikes]=useState(null);
+    // const Navigate=useNavigate()
 
     const likesRef=collection(db,"Likes")
     const likeDoc=query(likesRef,where("postId","==",post.id))
@@ -59,8 +60,10 @@ export const Post=(props)=>{
                 <p>@{post.username}</p>
             </div>
             <button onClick={userLiked ? removeLike:addLike} >{userLiked ? <>&#128078;</>:<>&#128077;</>}</button>
+            <button onClick={() => handleComment(post.id)} >comments</button>
             <p>Likes : {likes?.length}</p>
             <br />
+
         </div>
     )
 }

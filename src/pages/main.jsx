@@ -6,11 +6,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { PostSearch } from "../components/postSearch";
 import { RightSidebar } from "../components/rightSidbar";
 import '../styles/main.css'
+import CommentList from "../components/commentsList";
 
 export const Main = () => {
     const [user] = useAuthState(auth);
     const [postsList, setPostsList] = useState([]);
     const [searchInput, setSearchInput] = useState(""); 
+    const [commentPostId, setCommentPostId] = useState(""); 
+    const [showComments, setShowComments] = useState(false)
+
 
     const postsRef = collection(db, "posts");
 
@@ -23,6 +27,10 @@ export const Main = () => {
         }
     };
 
+    const handleComment=(postId)=>{
+        setShowComments(!showComments)
+        setCommentPostId(postId)
+    }
     useEffect(() => {
         getPosts();
     }, []);
@@ -34,22 +42,28 @@ export const Main = () => {
 
     return (
         <div className="container">
-        <div className="main-content">
-            {user ? (
-            <>
-                <PostSearch searchInput={searchInput} setSearchInput={setSearchInput} />
-                {filteredPosts.map((post) => (
-                <Post key={post.id} post={post} user={user} />
-                ))}
-            </>
-            ) : (
-            <h3>Please login first</h3>
+            {showComments && (
+                <div className="comment-layout">
+                            <div className="comment-section">
+                                <CommentList idPost={commentPostId} />
+                            </div>
+                </div>
             )}
-        </div>
-    
-        <div className="right-sidebar">
-            <RightSidebar />
-        </div>
+            <div className="main-content">
+                {user ? (
+                <>
+                    <PostSearch searchInput={searchInput} setSearchInput={setSearchInput} />
+                    {filteredPosts.map((post) => (
+                    <Post key={post.id} post={post} user={user} handleComment={handleComment} />
+                    ))}
+                </>
+                ) : (
+                <h3>Please login first</h3>
+                )}
+            </div>
+            <div className="right-sidebar">
+                <RightSidebar />
+            </div>
         </div>
     );
 };

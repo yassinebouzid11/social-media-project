@@ -4,6 +4,7 @@ import { Main } from './pages/main';
 import  {Login } from './pages/login';
 import { NavBar } from './components/navBar';
 import { CreatePost } from "./pages/createPost";
+import CommentList from './components/commentsList';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Main />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/createP' element={<CreatePost />}/>
+          <Route path='/comment/:idPost' element={<CommentList />}/>
         </Routes>
       </BrowserRouter>
     </div>

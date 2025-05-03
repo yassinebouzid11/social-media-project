@@ -1,18 +1,25 @@
 import { useEffect, useState } from 'react';
 import { db } from '../config/firebase';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
-import '../styles/components/comments.css';
+// import '../styles/components/comments.css';
 
 function CommentList({ postId }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, 'comments'), where('postId', '==', postId));
+    if (!postId) {
+      console.error("postId is undefined! Avoiding invalid Firestore query.");
+      return;
+    }
+  
+    const q = query(collection(db, "comments"), where("postId", "==", postId));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      setComments(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setComments(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
+  
     return () => unsubscribe();
   }, [postId]);
+  
 
   return (
     <div className="comments-section">

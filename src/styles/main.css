@@ -15,14 +15,27 @@
   }
   /* Sidebar */
   .right-sidebar {
-    
+    position: fixed;
+    top: 3em;
+    right: 0;
     flex-direction: column;
     gap: 1.5rem;
-    position: sticky;
     height: 100vh;
     background-color: #eee;
-    /* border-radius: 8px; */
     padding: 20px;
+    border-left: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   
+
+.comment-layout {
+    position: fixed;
+    top: 3em;
+    width: 20%;
+    height: 100vh;
+    background: #eee;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+}
